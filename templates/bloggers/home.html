@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular Bloggers</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #8e44ad;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 20px 0;
+            text-align: center;
+            border: 2px solid #3498db;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        a {
+            color: #e74c3c;
+            text-decoration: none;
+            margin: 0 10px;
+            display: inline-block;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a.view-details {
+            color: #8e44ad;
+        }
+
+        a.view-details:hover {
+            color: #6c3483;
+        }
+
+        .link-block {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .link-block a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: 2px solid #8e44ad;
+            color: #8e44ad;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .link-block a:hover {
+            background-color: #8e44ad;
+            color: #fff;
+        }
+
+        .link-block a.create-new {
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
+
+        .link-block a.create-new:hover {
+            background-color: #e74c3c;
+            color: #ffffff;
+        }
+
+        .link-block a.blogger-profiles {
+            border-color: #8e44ad;
+            color: #8e44ad;
+        }
+
+        .link-block a.blogger-profiles:hover {
+            background-color: #8e44ad;
+            color: #fff;
+        }
+
+        .link-block a.news {
+            border-color: #3498db;
+            color: #3498db;
+        }
+
+        .link-block a.news:hover {
+            background-color: #3498db;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Популярні блогери:</h1>
+    <ul>
+        {% for blogger in bloggers %}
+            <li>
+                <a href="{% url 'blogger_detail' blogger.id %}" class="view-details">{{ blogger.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="link-block">
+        <a href="{% url 'add_blogger' %}" class="create-new">Створити нового:</a>
+        <a href="{% url 'blogger_profiles' %}" class="blogger-profiles">Профілі:</a>
+        <a href="{% url 'news' %}" class="news">Новини:</a>
+    </div>
+</body>
+</html>

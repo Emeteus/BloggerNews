@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі про: {{ blogger.name }}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #8e44ad;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 15px 0;
+            font-size: 1.2em;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            text-align: center;
+            color: #3498db;
+            text-decoration: none;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            transition: border 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            border: 2px solid #8e44ad;
+        }
+    </style>
+</head>
+<body>
+    <h1> Деталі про: {{ blogger.name }}    {{ blogger.category }}</h1>
+    <p>Ім'я: {{ blogger.name }}</p>
+    <p>Kатегорія: {{ blogger.category }}</p>
+    <p>Oпис: {{ blogger.description }}</p>
+    <p>URL статті: {{ blogger.article_url }}</p>
+    <p>URL відео: {{ blogger.video_url }}</p>
+    <a href="{% url 'home' %}">Назад</a>
+</body>
+</html>

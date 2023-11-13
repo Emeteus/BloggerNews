@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogger Profiles</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #8e44ad;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #ff0000;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 15px 0;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #a95bf3;
+        }
+
+        a.view-details {
+            color: #27ae60;
+        }
+
+        a.view-details:hover {
+            text-decoration: underline;
+            color: #218c56;
+        }
+
+        a.create-new, a.back-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #db345b;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a.create-new:hover, a.back-home:hover {
+            background-color: #964de5;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Профілі:</h1>
+    <ul>
+        {% for blogger in bloggers %}
+            <li>
+                <a href="{% url 'blogger_detail' blogger.id %}">{{ blogger.name }}</a>
+                <a href="{% url 'blogger_detail' blogger.id %}" class="view-details">View Details</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_blogger' %}" class="create-new">Створити нового:</a>
+    <a href="{% url 'home' %}" class="back-home">Назад</a>
+</body>
+</html>
